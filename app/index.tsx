@@ -43,7 +43,7 @@ const showProducts = () => {
       <LastRead />
       <FlatList
         data={products}
-        renderItem={({ item }) => <SurahItem surahData={item} />}
+        renderItem={({ item }) => <SurahItem item={item} />}
         keyExtractor={(item) => item.number.toString()}
       />
     </View>
