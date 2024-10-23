@@ -61,13 +61,44 @@ const SurahItem = ({ item }: { item: Surah }) => {
 };
 
 const styles = StyleSheet.create({
-  itemContainer: { padding: 10, borderBottomWidth: 1, borderColor: '#ddd' },
-  numberContainer: { marginRight: 10 },
-  surahInfo: { flex: 1 },
-  number: { fontSize: 18, fontWeight: 'bold' },
-  englishName: { fontSize: 16 },
-  translation: { fontSize: 14, color: '#888' },
-  arabicName: { fontSize: 20, fontWeight: 'bold', color: '#333' },
+  itemContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    backgroundColor: '#f8f4ff',
+    borderRadius: 10,
+    marginVertical: 5,
+    marginHorizontal: 10,
+  },
+  numberContainer: {
+    backgroundColor: '#d1a7ff',
+    padding: 10,
+    borderRadius: 50,
+  },
+  surahInfo: {
+    flex: 1,
+    marginLeft: 10,
+  },
+  number: {
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+  englishName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  translation: {
+    fontSize: 14,
+    color: '#666',
+  },
+  arabicName: {
+    fontSize: 22,
+    color: '#6f42c1',
+    fontWeight: 'bold',
+  },
   modalBackground: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' },
   modalBox: { width: 300, padding: 20, backgroundColor: '#fff', borderRadius: 10, alignItems: 'center' },
   modalTitle: { fontSize: 18, fontWeight: 'bold', marginBottom: 10 },
