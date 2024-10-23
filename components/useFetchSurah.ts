@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-interface Data {
+interface Surah {
   number: number;
   name: string;
   englishName: string;
@@ -14,16 +14,15 @@ interface Data {
 interface Response {
   code: number;
   status: string;
-  data: Data[];
+  data: Surah[];
 }
 
 const api: string = "https://api.alquran.cloud/v1/surah";
 const false_api: string = "https://api.alquran.clouds/v1/surah";
 
 export const useFetchProduct = () => {
-  const [products, setProducts] = useState<Data[]>([]);
+  const [surah, setSurah] = useState<Surah[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -31,7 +30,7 @@ export const useFetchProduct = () => {
       try {
         const response = await fetch(api);
         const fetched: Response = await response.json();
-        const data: Data[] = fetched.data;
+        const data: Surah[] = fetched.data;
 
         // console.log(data);
 
@@ -39,7 +38,7 @@ export const useFetchProduct = () => {
 
         console.log("Fetched data online");
 
-        setProducts(data);
+        setSurah(data);
       } catch (error) {
         console.log("Error fetching data online");
 
@@ -50,14 +49,15 @@ export const useFetchProduct = () => {
           console.log("Fetched Stored data for offline");
           // console.log(storedProducts);
           // console.log(JSON.parse(storedProducts)); // showing offline data but not loading into setProducts
-          setProducts(JSON.parse(storedProducts));
+          setSurah(JSON.parse(storedProducts));
         }
       } finally {
         setLoading(false);
       }
+      
     };
     fetchProduct();
   }, []);
 
-  return { products, loading, error };
+  return { surah, loading };
 };

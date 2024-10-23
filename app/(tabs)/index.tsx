@@ -1,4 +1,4 @@
-import { useFetchProduct } from "@/components/useFetchProduct";
+import { useFetchProduct } from "@/components/useFetchSurah";
 import {
     ActivityIndicator,
     FlatList,
@@ -38,22 +38,20 @@ const SurahItem = ({ item }: { item: Surah }) => {
   };
 
 
-const showProducts = () => {
-    const { products, loading, error } = useFetchProduct();
+const showSurah = () => {
+    const { surah, loading } = useFetchProduct();
 
     if (loading) {
         return <ActivityIndicator size="large" color="#0000ff" />;
     }
 
-    if (error) {
-        return <Text style={{ backgroundColor: 'red' }} >{error}</Text>;
-    }
+   
 
     // console.log("Products at line 21:", products);
 
     return (
         <FlatList
-            data={products}
+            data={surah}
             
             keyExtractor={(item) => item.number.toString()}
             renderItem={({ item }) => <SurahItem item={item} />}
@@ -102,4 +100,4 @@ const styles = StyleSheet.create({
     },
   });
   
-export default showProducts;
+export default showSurah;

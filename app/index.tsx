@@ -1,4 +1,4 @@
-import { useFetchProduct } from "@/components/useFetchProduct";
+import { useFetchProduct } from "@/components/useFetchSurah";
 import {
   ActivityIndicator,
   FlatList,
@@ -26,14 +26,10 @@ import { useEffect } from "react";
 
 
 const showProducts = () => {
-  const { products, loading, error } = useFetchProduct();
+  const { surah, loading } = useFetchProduct();
 
   if (loading) {
     return <ActivityIndicator size="large" color="#0000ff" />;
-  }
-
-  if (error) {
-    return <Text style={{ backgroundColor: 'red' }} >{error}</Text>;
   }
 
   // console.log("Products at line 21:", products);
@@ -42,9 +38,9 @@ const showProducts = () => {
     <View style={styles.container}>
       <LastRead />
       <FlatList
-        data={products}
+        data={surah}
         renderItem={({ item }) => <SurahItem item={item} />}
-        keyExtractor={(item) => item.number.toString()}
+        keyExtractor={(surah) => surah.number.toString()}
       />
     </View>
   );
